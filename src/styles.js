@@ -60,7 +60,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFAFA',
     borderColor: 'black',
     margin: 0
-  }
+  },
+  item: {
+    alignItems: "center",
+    backgroundColor: "#dcda48",
+    flexBasis: 0,
+    flexGrow: 1,
+    margin: 4,
+    padding: 20
+  },
+  itemEmpty: {
+    backgroundColor: "transparent"
+  },
 });
 
 export default styles;
