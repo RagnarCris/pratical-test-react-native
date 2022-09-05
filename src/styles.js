@@ -24,7 +24,34 @@ const styles = StyleSheet.create({
     height: 40, 
     borderRadius: 100,
     marginLeft: 100
-  }
+  },
+  bookItemImage: {
+    height: 160,
+    width: 100,
+  },
+  bookItemTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    flexWrap: 'wrap'
+  },
+  bookItemAuthor: {
+    fontSize: 12,
+    color: 'light-gray',
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  ratingImage: {
+    height: 20,
+    width: 80,
+  },
+  square: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#800000",
+    borderRadius: 5,
+  },
 });
 
 export default styles;
