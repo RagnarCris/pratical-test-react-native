@@ -52,6 +52,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#800000",
     borderRadius: 5,
   },
+  searchBarInput: {
+    color: 'black',
+    fontWeight: 'bold'
+  },
+  searchBar: {
+    backgroundColor: '#FFFAFA',
+    borderColor: 'black',
+    margin: 0
+  }
 });
 
 export default styles;
