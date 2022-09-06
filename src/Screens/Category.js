@@ -23,8 +23,8 @@ const Category = ({ route, navigation }) => {
     const { item } = route.params
     const [carregando,setCarregando]=useState(true)
     const [livros,setLivros]=useState([])
-    const APIKEY = "UXh26tMQFKjgsrHicJxIp1NhAAax7GaO" //Minha api-key
-    //const APIKEY = "vi0bsV0yOCA9qYnmAaOUJV4dO0BNhUGR" //api-key do projeto
+    //const APIKEY = "UXh26tMQFKjgsrHicJxIp1NhAAax7GaO" //Minha api-key
+    const APIKEY = "vi0bsV0yOCA9qYnmAaOUJV4dO0BNhUGR" //api-key do projeto
 
 
 
