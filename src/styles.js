@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   item: {
     alignItems: "center",
-    backgroundColor: "#dcda48",
+    backgroundColor: "transparent",
     flexBasis: 0,
     flexGrow: 1,
     margin: 4,

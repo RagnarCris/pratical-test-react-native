@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FetchTest">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} options={{headerTitle: () => (<HeaderHome/>)}} />
         <Stack.Screen name="Detail" component={Detail} options={{headerTitle: " "}} />
         <Stack.Screen name="Category" component={Category} options={{headerTitle: "Categoria"}} />

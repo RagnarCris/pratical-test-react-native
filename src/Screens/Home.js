@@ -29,15 +29,15 @@ const Home = ({ navigation }) => {
               .then( dados => {
                   const json_categorias = dados[0];
                   const json_completo = dados[1];
-                  setCategorias(json_categorias.results);
                   const resultados = json_completo.results;
                   const lista_livros = resultados.lists;
                   const livros_aux = []
-                  // Separa 10 livros para as seções "Para você" e "Os mais lidos da semana"
-                  for (var i = 0; i < 10; i++){
+                  // Separa 5 livros para as seções "Para você" e "Os mais lidos da semana"
+                  for (var i = 0; i < 5; i++){
                       let item = lista_livros[i]
                       livros_aux.push(...item.books);
                   }
+                  setCategorias(json_categorias.results);
                   setLivros(livros_aux)})
               .catch((e)=>(console.log(e)))
               .finally(()=>setCarregando(false))
@@ -88,39 +88,42 @@ const Home = ({ navigation }) => {
           { title: 'Os mais lidos da semana', data: livros}
           ]}
           renderSectionHeader={({ section }) => {
-            console.log(section.title);
-            section.title === 'Categorias' ?
-              <>
+            if(section.title === 'Categorias'){
+              return(
+                <View>
+                    <Text style={styles.sectionTitle}>{section.title}</Text>
+                    <FlatList
+                        horizontal
+                        data={section.data}
+                        keyExtractor={({id},index)=>index}
+                        renderItem={({ item }) => {
+                            <TouchableOpacity onPress={() => navigation.navigate('Category', {item})}>
+                                <CategoryItem categoria={item.display_name}/>
+                            </TouchableOpacity>
+                        }}
+                        showsHorizontalScrollIndicator={false}
+                    />
+                </View>
+              );  
+            }
+            console.log(section.data)
+            return(
+                <View>
                 <Text style={styles.sectionTitle}>{section.title}</Text>
-                  <FlatList
-                      horizontal
-                      data={section.data}
-                      keyExtractor={({id},index)=>index}
-                      renderItem={({ item }) => {
-                        <TouchableOpacity onPress={() => navigation.navigate('Category', item.list_name_encoded)}>
-                          <CategoryItem categoria={item.display_name}/>
+                    <FlatList
+                        horizontal
+                        data={section.data}
+                        keyExtractor={({id},index)=>index}
+                        renderItem={({ item }) => {
+                        <TouchableOpacity onPress={() => navigation.navigate('Detail', {item})}>
+                            <BookItem imagem={item.book_image} titulo={item.title} autor={item.author} />
                         </TouchableOpacity>
                     }}
-                      showsHorizontalScrollIndicator={false}
-                  />
-              </>
-            :
-            (
-            <>
-              <Text style={styles.sectionTitle}>{section.title}</Text>
-                <FlatList
-                    horizontal
-                    data={section.data}
-                    keyExtractor={({id},index)=>index}
-                    renderItem={({ item }) => {
-                      <TouchableOpacity onPress={() => navigation.navigate('Detail')}>
-                        <BookItem imagem={item.book_image} titulo={item.title} autor={item.author} />
-                      </TouchableOpacity>
-                  }}
-                    showsHorizontalScrollIndicator={false}
-                />
-            </>
-          )}}
+                        showsHorizontalScrollIndicator={false}
+                    />
+                </View>
+            );
+          }}
           renderItem={({ item, section }) => {
               return null;
           }}

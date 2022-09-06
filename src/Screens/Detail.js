@@ -1,9 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import styles from '../styles'
 
-const Detail = ({ navigation }) => {
+const Detail = ({ route, navigation }) => {
+  const { item } = route.params;
+
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Detail</Text>
     </View>
   )

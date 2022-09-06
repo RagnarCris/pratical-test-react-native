@@ -20,7 +20,7 @@ function createRows(data, columns) {
   }
 
 const Category = ({ route, navigation }) => {
-    const list_name_encoded = route.params
+    const { item } = route.params
     const [carregando,setCarregando]=useState(true)
     const [livros,setLivros]=useState([])
     const APIKEY = "UXh26tMQFKjgsrHicJxIp1NhAAax7GaO" //Minha api-key
@@ -30,7 +30,7 @@ const Category = ({ route, navigation }) => {
 
     useEffect(
         ()=>{
-            fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json\?api-key\="+APIKEY)
+            fetch("https://api.nytimes.com/svc/books/v3/lists/current/"+item.list_name_encoded+".json\?api-key\="+APIKEY)
                 .then((resp)=>resp.json())
                 .then((json) => {
                     const resultados = json.results;
